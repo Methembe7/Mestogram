@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etPassword;
     private Button btnLogin;
     private static String TAG = "tag for logging";
+    private Button btnSignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,23 @@ public class LoginActivity extends AppCompatActivity {
                 login(username, password);
             }
         });
+        btnSignup = findViewById(R.id.btnSignup);
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "ClickLister is working to navigate to goSignupActivity()");
+                goSignupActivity();
+            }
+        });
+    }
+
+    private void goSignupActivity() {
+
+        Log.d(TAG, "Navigating to signup activity");
+        Intent i = new Intent(LoginActivity.this, SignupActivity.class);
+        startActivity(i);
+        finish();
+
     }
 
     private void login(String username, String password) {

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView; //
 import android.widget.Toast;
 
@@ -32,9 +33,13 @@ public class MainActivity extends AppCompatActivity {
 
     private final String TAG = "Main Activity";
     private EditText etDescription;
-    private Button btnCaptureImage;
+    private ImageButton ibCaptureImage;
     private ImageView ivPostImage;
     private Button btnSubmit;
+    private ImageButton ibLogout;
+    private ImageButton ibTimeline;
+
+
 
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
     public String photoFileName = "photo.jpg";
@@ -46,13 +51,36 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         etDescription = findViewById(R.id.etDescription);
-        btnCaptureImage = findViewById(R.id.btnCaptureImage);
+        ibCaptureImage = findViewById(R.id.ibCaptureImage);
         ivPostImage = findViewById(R.id.ivPostImage);
         btnSubmit = findViewById(R.id.btnSubmit);
+        ibLogout = findViewById(R.id.ibLogout);
+        ibTimeline = findViewById(R.id.ibTimeline);
+
+
+        ibLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "ClickLister is working");
+
+                goLogoutActivity();
+            }
+        });
+
+
+        ibTimeline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "ClickLister is working");
+
+                goTimelineActivity();
+            }
+        });
 
 
 
-        btnCaptureImage.setOnClickListener(new View.OnClickListener() {
+
+        ibCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 launchCamera();
@@ -76,9 +104,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
+
+    private void goTimelineActivity() {
+        Log.d(TAG, "Navigating to timeline activity");
+        Intent i = new Intent(MainActivity.this, TimelineActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    private void goLogoutActivity() {
+        Log.d(TAG, "Navigating to logout activity");
+        Intent i = new Intent(MainActivity.this, LogoutActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+
 
     private void launchCamera() {
 // create Intent to take a picture and return control to the calling application

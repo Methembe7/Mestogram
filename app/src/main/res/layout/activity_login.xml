@@ -6,15 +6,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".LoginActivity"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+
+    >
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="261dp"
+        android:layout_height="99dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        app:srcCompat="@drawable/mestogramlogo1" />
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="text"
-        android:hint="username" />
+        android:gravity="center"
+        android:hint="username"
+        android:inputType="text" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -25,8 +36,8 @@
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="password"
-            />
+            android:gravity="center"
+            android:hint="password " />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -34,5 +45,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Log In"
-        android:textColorHighlight="@color/design_default_color_primary"/>
+        android:textColorHighlight="@color/design_default_color_primary"
+        android:background="@color/instabluecolor"
+        android:textColor="@android:color/white"/>
+
+    <Button
+        android:id="@+id/btnSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:textColor="#458eff"
+        android:background="@android:color/white"/>
 </LinearLayout>
