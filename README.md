@@ -40,7 +40,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Implementing fragments across the main activity
+Figuring out how to add a logout button to the profile fragment, which inherits the posts fragment (was fun)
 
 ## Open-source libraries used
 
