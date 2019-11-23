@@ -28,7 +28,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] User can open a logout screen only from their profile tab (just like instagram!)
+- [x] User can open a logout screen only from their profile tab (just like instagram!)
 
 ## Video Walkthrough
 
