@@ -1,11 +1,7 @@
 package com.mmoyo.mestogram;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,9 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
     private final String TAG = "Main Activity";
 
-    private ImageButton ibLogout;
-    private ImageButton ibTimeline;
-
 
     private BottomNavigationView bottomNavigationView;
 
@@ -35,29 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
 
-        ibLogout = findViewById(R.id.ibLogout);
-        ibTimeline = findViewById(R.id.ibTimeline);
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-
-        ibLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i(TAG, "ClickLister is working");
-
-                goLogoutActivity();
-            }
-        });
-
-
-        ibTimeline.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i(TAG, "ClickLister is working");
-
-                goTimelineActivity();
-            }
-        });
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -88,21 +60,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-    private void goTimelineActivity() {
-        Log.d(TAG, "Navigating to timeline activity");
-        Intent i = new Intent(MainActivity.this, TimelineActivity.class);
-        startActivity(i);
-        finish();
-    }
-
-    private void goLogoutActivity() {
-        Log.d(TAG, "Navigating to logout activity");
-        Intent i = new Intent(MainActivity.this, LogoutActivity.class);
-        startActivity(i);
-        finish();
-    }
-
-
-            }
+}

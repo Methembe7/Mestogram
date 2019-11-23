@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SignupActivity">
+    tools:context=".SignupActivity"
+    android:fontFamily="sans-serif">
 
     <ImageView
         android:id="@+id/imageView"
@@ -19,7 +20,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="center"
-        android:hint="username"
+        android:hint="Username"
         android:inputType="text" />
 
 
@@ -29,7 +30,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="center"
-        android:hint="email "
+        android:hint="Email "
         android:inputType="text" />
 
 
@@ -39,7 +40,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="center"
-        android:hint="set password "
+        android:hint="Set password "
         android:inputType="text" />
 
     <Button

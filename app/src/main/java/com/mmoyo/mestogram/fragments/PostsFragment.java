@@ -5,12 +5,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.mmoyo.mestogram.Post;
 import com.mmoyo.mestogram.PostsAdapter;
@@ -31,6 +33,10 @@ public class PostsFragment extends Fragment {
     protected PostsAdapter adapter;
     protected List<Post> mPosts;
 
+    protected SwipeRefreshLayout swipeContainer;
+
+    protected Button btnLogout;
+
 
     @Nullable
     @Override
@@ -42,9 +48,14 @@ public class PostsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         rvPosts = view.findViewById(R.id.rvPosts);
 
+        swipeContainer = view.findViewById(R.id.swipeContainer);
+
+        btnLogout = view.findViewById(R.id.btnLogout);
+        btnLogout.setVisibility(View.GONE);
+
         //create the data source
         mPosts = new ArrayList<>();
-        //crete the adapter
+        //create the adapter
         adapter = new PostsAdapter(getContext(), mPosts);
         //set the adapter on the recyclerview
         rvPosts.setAdapter(adapter);
@@ -52,9 +63,29 @@ public class PostsFragment extends Fragment {
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
 
         queryPosts();
+
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                Log.i(TAG, "fetching new data");
+                queryPosts();
+                // Now we call setRefreshing(false) to signal refresh has finished
+                swipeContainer.setRefreshing(false);
+
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
     }
 
-    protected void queryPosts() {
+
+
+    protected void queryPosts(){
         ParseQuery<Post> postQuery = new ParseQuery<Post>(Post.class);
         postQuery.include(Post.KEY_USER);
         postQuery.setLimit(20);
@@ -67,9 +98,12 @@ public class PostsFragment extends Fragment {
                     e.printStackTrace();
                     return;
                 }
+//                mPosts.addAll(posts);
+//               adapter.notifyDataSetChanged();
 
-                mPosts.addAll(posts);
-                adapter.notifyDataSetChanged();
+                adapter.clear();
+                adapter.addAll(posts);
+
 
 
                 for (int i = 0; i < posts.size(); i++) {
