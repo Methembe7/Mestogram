@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
-    android:fontFamily="sans-serif">
-
+    android:fontFamily="sans-serif"
+    android:layout_margin="10dp">
 
     <EditText
         android:id="@+id/etDescription"
@@ -14,7 +14,17 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Caption"
-        android:inputType="text" />
+        android:inputType="text"
+        android:layout_marginTop="40dp"/>
+
+    <Button
+        android:id="@+id/btnCaptureImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/instabluecolor"
+        android:text="Take New Photo "
+        android:textColor="@android:color/white" />
 
     <ImageView
         android:id="@+id/ivPostImage"
@@ -24,13 +34,14 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"/>
 
+
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:layout_marginTop="40dp"
         android:background="@color/instabluecolor"
-        android:textColor="@android:color/white"
-        android:layout_marginTop="40dp"/>
+        android:text="Post "
+        android:textColor="@android:color/white" />
 
 </LinearLayout>

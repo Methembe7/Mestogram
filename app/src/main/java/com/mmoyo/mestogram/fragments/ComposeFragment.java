@@ -37,7 +37,7 @@ public class ComposeFragment extends Fragment {
     private EditText etDescription;
     private ImageView ivPostImage;
     private Button btnSubmit;
-    private Button ibCaptureImage;
+    private Button btnCaptureImage;
     private final String TAG = "ComposeFragment";
 
 
@@ -67,17 +67,15 @@ public class ComposeFragment extends Fragment {
 
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnSubmit = view.findViewById(R.id.btnSubmit);
+        btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
 
 
-
-
-//        ibCaptureImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                launchCamera();
-//            }
-//        });
-
+        btnCaptureImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchCamera();
+            }
+        });
 
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +83,7 @@ public class ComposeFragment extends Fragment {
             public void onClick(View view) {
                 String description = etDescription.getText().toString();
                 ParseUser user = ParseUser.getCurrentUser();
-                if(photoFile == null || ivPostImage.getDrawable() == null){
+                if (photoFile == null || ivPostImage.getDrawable() == null) {
                     Log.e(TAG, "No photo to submit");
                     Toast.makeText(getContext(), "There is no photo", Toast.LENGTH_SHORT).show();
                     return;
@@ -98,7 +96,7 @@ public class ComposeFragment extends Fragment {
 
 
     private void launchCamera() {
-// create Intent to take a picture and return control to the calling application
+        // create Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Create a File reference to access to future access
         photoFile = getPhotoFileUri(photoFileName);
